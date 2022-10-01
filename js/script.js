@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Timer
 
-  const deadline = '2022-08-18';
+  const deadline = '2022-10-18';
 
   function getTimeRemaning(endtime) {
     const hoursInDay = 24,
@@ -379,12 +379,16 @@ window.addEventListener('DOMContentLoaded', () => {
     dotsArr.push(dot);
     dots.append(dot);
   }
+
+  function removeUnits(str) {
+    return +str.replace(/\D/g, '');
+  };
   
   sliderNextBtn.addEventListener('click', () => {
-    if (offset == +slideWidth.slice(0, slideWidth.length - 2) * (slides.length - 1)) {
+    if (offset == removeUnits(slideWidth) * (slides.length - 1)) {
       offset = 0; 
     } else {
-      offset += +slideWidth.slice(0, slideWidth.length - 2);
+      offset += removeUnits(slideWidth);
     }
 
     slidesField.style.transform = `translateX(-${offset}px)`;
@@ -401,9 +405,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   sliderPrevBtn.addEventListener('click', () => {
     if (offset == 0) {
-      offset = +slideWidth.slice(0, slideWidth.length - 2) * (slides.length - 1);
+      offset = removeUnits(slideWidth) * (slides.length - 1);
     } else {
-      offset -= +slideWidth.slice(0, slideWidth.length - 2);
+      offset -= removeUnits(slideWidth);
     }
 
     slidesField.style.transform = `translateX(-${offset}px)`;
@@ -423,7 +427,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const slideTo = event.target.getAttribute('data-slide-to');
 
       slideIndex = slideTo;
-      offset = +slideWidth.slice(0, slideWidth.length - 2) * (slideTo - 1);
+      offset = removeUnits(slideWidth) * (slideTo - 1);
 
       slidesField.style.transform = `translateX(-${offset}px)`;
 
