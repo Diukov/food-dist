@@ -32,7 +32,7 @@ function calculator() {
     } else {
       caloriesResult.textContent = Math.round((88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age)) * ratio);
     }
-  };
+  }
   
   calcTotalCalories();
 
@@ -77,7 +77,7 @@ function calculator() {
         calcTotalCalories();
         console.log(ratio, gender, elem.classList);
       });
-    })
+    });
   }
   
   getStaticInformation('#gender div', 'calculating__choose-item_active');
@@ -114,4 +114,4 @@ function calculator() {
   getDynamicInformation('#weight'); 
 }
 
-module.exports = calculator;
+export default calculator;

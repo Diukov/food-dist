@@ -1,6 +1,4 @@
-function timer() {
-  const deadline = '2022-10-18';
-
+function timer(id, deadline) {
   function getTimeRemaning(endtime) {
     const hoursInDay = 24,
           minutesInHour = 60,
@@ -63,7 +61,7 @@ function timer() {
     }
   }
 
-  setClock('.timer', deadline);
+  setClock(id, deadline);
 }
 
-module.exports = timer;
+export default timer;
